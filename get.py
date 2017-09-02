@@ -7,6 +7,8 @@ sys.setdefaultencoding('utf8')                                             #deut
 
 url1 = 'URL'                                                               #URL1
 url2 = 'URL?s=1,1'                                                         #URL2
+url2 = 'URL?s=1,0'                                                         #URL2
+
 payload = {'make': 'send','user': 'BENUTZERNAME','pass': 'PASSWORT'}       #Benutzername und Passwort
 
 response = requests.post(url, data=payload)                                #übermittle den Payload mit dem Benutzer und
