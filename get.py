@@ -5,7 +5,8 @@ import re
 reload(sys)
 sys.setdefaultencoding('utf8')                                             #deutschen Zeichensatz einstellen
 
-url = 'URL'                                                                #URL
+url1 = 'URL'                                                               #URL1
+url2 = 'URL?s=1,1'                                                         #URL2
 payload = {'make': 'send','user': 'BENUTZERNAME','pass': 'PASSWORT'}       #Benutzername und Passwort
 
 response = requests.post(url, data=payload)                                #übermittle den Payload mit dem Benutzer und
@@ -20,6 +21,9 @@ for line in response:                                                      #für
 			print line.split(",")[11].split("]")[0]            #trenne die Zeile bei den kommas und nimm
 			                                                   #die 11 spalte, trenne davon beim ] und nimm die
 				                                           #erste spalte
+
+response2 = requests.post(url2, data=payload)                              #übermittle den Payload mit dem Benutzer und					
+#print(response2.text)                                                     #Drucke die Server Antwort2
 
 # Beispiel einer Zeile:
 #  charts[1]['mittel'] = [['Sa',22.4],['So',20.9],['Mo',21.5],['Di',21.7],['Mi',22.3],['Do',16.8],['Fr',13.9]];
