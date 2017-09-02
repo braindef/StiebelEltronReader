@@ -12,7 +12,7 @@ url3 = 'URL?s=1,0'                                                         #URL3
 payload = {'make': 'send','user': 'BENUTZERNAME','pass': 'PASSWORT'}       #Benutzername und Passwort
 
                                                                            #übermittle den Payload mit dem Benutzer und
-                                                                           #passwort und empfange die Server-Antwort
+                                                                           #passwort und empfange die Server-Antworten
 response1 = requests.post(url1, data=payload, headers={'Connection':'close'})
 response2 = requests.post(url2, data=payload, headers={'Connection':'close'})
 response3 = requests.post(url3, data=payload, headers={'Connection':'close'})
