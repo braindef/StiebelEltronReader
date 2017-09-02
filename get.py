@@ -1,14 +1,20 @@
 import requests
 import sys
+import re
 
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-url = 'IP ADRESSE oder URL des Servers'
+url = 'URL'
 payload = {'make': 'send','user': 'BENUTZERNAME','pass': 'PASSWORT'}
 
-r = requests.post(url, data=payload)
+response = requests.post(url, data=payload)
 
-print(r.text)
-print(r.status_code)
+#print(response.text)
+#print(response.status_code)
 
+for line in response:
+	if re.search('charts', line):
+		##print line
+		if re.search('mittel', line):
+			print line.split(",")[11].split("]")[0]
