@@ -4,9 +4,7 @@
 There seems to be a thing that must be added:
 there are twice the Value SOLLTEMPERATUR HK 1, SOLLTEMPERATUR HK 2
 guess one menas german "Heizkessel" and the other means german "Heizkörper"
-->I will change that later to 
-
-There ist also a Zabbix Template "SOLLTEMPERATUR Heizkörper 1" and "SOLLTEMPERATUR Heizkessel 1"
+->I will change that later to "SOLLTEMPERATUR Heizkörper 1" and "SOLLTEMPERATUR Heizkessel 1"
 
 To install:
 1. Install Zabbix on eg. a Debian Server
