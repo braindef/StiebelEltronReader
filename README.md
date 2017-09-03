@@ -23,14 +23,17 @@ To install:
 
 -If you want to **monitor your SNMP-Devices** / Switches With Zabbix see https://www.youtube.com/watch?v=kkipRMrNW2o
 
-Security Considerations
+
+## Security Considerations
 
 It is a bad idea to use this script and also the Webinterface over the internet since it is completely not encrypted except you use a https proxy and access over HTTPS
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/password.png "password")
 As you can easy see with **wireshark** and the function **follow tcp stream**
 
 At the moment you can get these values with my python script:
+
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/webinterface1.png "Webinterface 1")
+
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/webinterface2.png "Webinterface 2")
 
 
