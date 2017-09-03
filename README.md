@@ -17,11 +17,11 @@ To install:
 6. import the *Template zbx_export_Heizung.xml* with your zabbix interface
 7. Customize a screen for your
 
--For installing Zabbix see: http://marclandolt.ch/ml_buzzernet/2017/06/03/zabbix-on-debian-stretch/
+-For **installing Zabbix** see: http://marclandolt.ch/ml_buzzernet/2017/06/03/zabbix-on-debian-stretch/
 
--For installing Debian use Google: "installing Debian Stretch" or see my Video: https://www.youtube.com/watch?v=GvW4kpUvRiU
+-For **installing Debian** use Google: "installing Debian Stretch" or see my Video: https://www.youtube.com/watch?v=GvW4kpUvRiU
 
--If you want to monitor your SNMP-Devices / Switches With Zabbix see https://www.youtube.com/watch?v=kkipRMrNW2o
+-If you want to **monitor your SNMP-Devices** / Switches With Zabbix see https://www.youtube.com/watch?v=kkipRMrNW2o
 
 
 Have Fun!
