@@ -10,9 +10,9 @@ There ist also a Zabbix Template "SOLLTEMPERATUR Heizkörper 1" and "SOLLTEMPERA
 
 To install:
 1. Install Zabbix on eg. a Debian Server
-2. run *git clone https://github.com/braindef/StiebelEltronReader* in the folder /etc/zabbix/externalscripts
-3. lazy variant: run *chown -R zabbix.zabbix /etc/zabbix/externalscripts*
-4. Copy get.sh and get.py to */etc/zabbix/externalscripts*
+2. run **git clone https://github.com/braindef/StiebelEltronReader** in the folder /etc/zabbix/externalscripts
+3. lazy variant: run **chown -R zabbix.zabbix /etc/zabbix/externalscripts**
+4. Copy get.sh and get.py to **/etc/zabbix/externalscripts**
 5. Set URL, Username and Password in get.py
 6. import the *Template zbx_export_Heizung.xml* with your zabbix interface
 7. Customize a screen for your
