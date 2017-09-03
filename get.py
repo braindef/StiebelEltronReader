@@ -13,12 +13,12 @@ sys.setdefaultencoding('utf8')
 
 #Adresse der Webseite(n)
 #---------------------------------------------------------------------------
-url1 = 'http://192.168.0.100/'		#Adresse der Steuerung bzw. des Webinterfaces
+url1 = '****ADRESSE****'		#Adresse der Steuerung bzw. des Webinterfaces
 url2 = url1 + '?s=1,0'
 url3 = url1 + '?s=1,1'
 
 #Benutzername und Passwort
-payload = {'make': 'send','user': '***USER***','pass': '***PASSWORD***'}
+payload = {'make': 'send','user': '****BENUTZERNAME****','pass': '****PASSWORT****'}
 #---------------------------------------------------------------------------
 
 
@@ -46,7 +46,7 @@ filenameCSV = './Heizung_'+currentMonth+'.csv'
 # Instantiate the parser
 def parseArgs():
 	parser = argparse.ArgumentParser(description='Liest Werte aus Stiebel Elron Webinterface aus aufruf z.B: $ python get.py --live "PUFFERISTTEMPERATUR"')
-	parser.add_argument('--csv', action="store_true", default=False, help='gibt alle Daten als CSV aus')
+	#parser.add_argument('--csv', action="store_true", default=False, help='gibt alle Daten als CSV aus')
 	parser.add_argument('--middle', action="store", dest="middle", help='gibt die Mittelwerte von der Startseite aus')
 	parser.add_argument('--live', action="store", dest="specific", help='gibt die Live Werte aus')
 	args = parser.parse_args()
@@ -71,10 +71,6 @@ def getFile():
 	file.write(response2.content)
 	file.write(response3.content)
 	file.close()
-
-	if args.csv is True:
-		addToCSV()
-
 
 #gibt die abgefragten Webseiten der Steuerung aus (nur für Testzwecke)
 def printResponse():
