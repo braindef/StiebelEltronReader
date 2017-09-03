@@ -1,5 +1,5 @@
-# StiebelEltronReader
-### Reads the Values from Stiebler Elteron Webinterface and parses it to a format that can be read by zabbix monitoring with external scripts
+# Stiebel Eltron Webinterface Reader (German)
+### Reads the values from Stiebler Elteron Webinterface and parses it to a format that can be read by zabbix monitoring with external scripts (Tested so far on v2.5.6)
 
 There seems to be a thing that must be added:
 there are twice the Value SOLLTEMPERATUR HK 1, SOLLTEMPERATUR HK 2
