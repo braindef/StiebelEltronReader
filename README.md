@@ -37,6 +37,6 @@ At the moment you can get these values with my python script:
 
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/webinterface2.png "Webinterface 2")
 
-
+And of course you can do this also over RS232, MODbus or CANbus, but the chance that you brick your controller unit is IMHO much bigger then and it is also more complicated to get the correct values and units. Since Stiebel Eltron did this already i decided to use this way.
 
 Have Fun!
