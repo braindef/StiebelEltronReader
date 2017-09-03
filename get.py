@@ -1,5 +1,4 @@
 #coding=utf-8
-#Benötigte Programmbibliotheken
 import argparse
 import time
 import os.path
@@ -11,14 +10,19 @@ import re
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-#Angabe der Webseiten
-url1 = 'http://'
+
+#Adresse der Webseite(n)
+#---------------------------------------------------------------------------
+url1 = 'http://192.168.0.100/'		#Adresse der Steuerung bzw. des Webinterfaces
 url2 = url1 + '?s=1,0'
 url3 = url1 + '?s=1,1'
 
-#Benutzername und passwort
-payload = {'make': 'send','user': '','pass': ''}
+#Benutzername und Passwort
+payload = {'make': 'send','user': '***USER***','pass': '***PASSWORD***'}
+#---------------------------------------------------------------------------
 
+
+#Alle Verfügbaren Werte (Keys) um die Werte (Values) abzufragen, falls die Steuerungssoftware geändert wird muss das angepasst werden
 allKeys = ["SOLLTEMPERATUR HK 1","SOLLTEMPERATUR HK 2","ISTTEMPERATUR","SOLLTEMPERATUR","BIVALENZTEMPERATUR HZG",
 "BIVALENZTEMPERATUR WW","VERFLÜSSIGERTEMP.","DRUCK HEIZKREIS","VOLUMENSTROM","LEISTUNG WP",
 "LSTG PU PUMPE","AUSSENTEMPERATUR","ISTTEMPERATUR HK 1","SOLLTEMPERATUR HK 1","ISTTEMPERATUR HK 2",
@@ -27,9 +31,12 @@ allKeys = ["SOLLTEMPERATUR HK 1","SOLLTEMPERATUR HK 2","ISTTEMPERATUR","SOLLTEMP
 "VD WARMWASSER","NHZ 1","NHZ 2","VD HEIZEN TAG","VD HEIZEN SUMME",
 "VD WARMWASSER TAG","VD WARMWASSER SUMME","NHZ HEIZEN SUMME"]
 
+
 #Aktuelle Stunde als Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x die Stunde abzufragen
 currentHour = time.strftime("%Y%m%d%H")
 filename = './'+currentHour+'.dump'
+
+#Aktueller Monat als Dateiname für die CSV Datei, Pro Monat eine Datei
 currentMonth = time.strftime("%Y%m")
 filenameCSV = './Heizung_'+currentMonth+'.csv'
 #print filename
@@ -51,10 +58,9 @@ def parseArgs():
 	if not (args.specific is None):
 	#	print ("Spezifisch: %s", args.specific)
 		print getLive(args.specific)
-	if args.csv is True:
-		addToCSV()
 
-#Hole das File von der STIEBEL ELTRON Webseite v2.5.6
+
+#Hole die drei Werteseiten von der STIEBEL ELTRON Webseite v2.5.6
 def getFile():
 	response1 = requests.post(url1, data=payload, headers={'Connection':'close'})
 	response2 = requests.post(url2, data=payload, headers={'Connection':'close'})
@@ -65,6 +71,10 @@ def getFile():
 	file.write(response2.content)
 	file.write(response3.content)
 	file.close()
+
+	if args.csv is True:
+		addToCSV()
+
 
 #gibt die abgefragten Webseiten der Steuerung aus (nur für Testzwecke)
 def printResponse():
@@ -78,7 +88,7 @@ def printResponse():
 	print(response3.status_code)
 
 
-#Werte die gespeicherte Datei aus
+#Hole die Mittelwerte aus dem gespeicherten File
 def getMiddle(value):
 	with open(filename, 'r') as fin:
 		for line in fin:
@@ -87,13 +97,15 @@ def getMiddle(value):
 				if re.search('mittel', line):
 					print line.split(",")[11].split("]")[0]
 
+
+#Hole die Live Daten aus dem gespeicherten File
 def getLive(value):
 	#print value
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search(">"+value+"<", line):
 				return fin.next().split(">")[1].split(" ")[0].replace(",",".");
-				
+
 
 #fügt alle aktuelle Werte zum CSV dazu
 def addToCSV():
@@ -110,11 +122,16 @@ def addToCSV():
 		for i in allKeys:
 			fout.write(","+getLive(i))
 		fout.write("\n")
-	
 
-#Hauptprogramm
-if not os.path.exists(filename):
-	getFile()
-	addToCSV()
-parseArgs()
+
+
+
+#-----------------------------------------
+# MAIN: Hauptprogramm, hier startet alles
+#-----------------------------------------
+if not os.path.exists(filename):#Holt das Datenfile vom Server wenn es diese Stunde nicht schon einmal geholt wurde und die Datei schon existiert
+	getFile()		
+	addToCSV()		#Fügt die Daten dem CSV hinzu
+parseArgs()			#je nach Aufrufparameter (Args) wird dann die Funktion für den Entsprechenden wert aufgerufen
+
 
