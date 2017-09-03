@@ -7,20 +7,31 @@ import requests
 import sys
 import re
 
+#auf UTF-8 Zeichensatz einstellen
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 #Angabe der Webseiten
-url1 = 'URL'
-url2 = url1+'?s=1,0'
-url3 = url1+'?s=1,1'
+url1 = 'http://'
+url2 = url1 + '?s=1,0'
+url3 = url1 + '?s=1,1'
 
 #Benutzername und passwort
-payload = {'make': 'send','user': 'USER','pass': 'PASSWORD'}
+payload = {'make': 'send','user': '','pass': ''}
+
+allKeys = ["SOLLTEMPERATUR HK 1","SOLLTEMPERATUR HK 2","ISTTEMPERATUR","SOLLTEMPERATUR","BIVALENZTEMPERATUR HZG",
+"BIVALENZTEMPERATUR WW","VERFLÜSSIGERTEMP.","DRUCK HEIZKREIS","VOLUMENSTROM","LEISTUNG WP",
+"LSTG PU PUMPE","AUSSENTEMPERATUR","ISTTEMPERATUR HK 1","SOLLTEMPERATUR HK 1","ISTTEMPERATUR HK 2",
+"SOLLTEMPERATUR HK 2","VORLAUFISTTEMPERATUR WP","VORLAUFISTTEMPERATUR NHZ","RÜCKLAUFISTTEMPERATUR",
+"FESTWERTSOLLTEMPERATUR","PUFFERSOLLTEMPERATUR","PUFFERISTTEMPERATUR","RESTSTILLSTANDZEIT","VD HEIZEN",
+"VD WARMWASSER","NHZ 1","NHZ 2","VD HEIZEN TAG","VD HEIZEN SUMME",
+"VD WARMWASSER TAG","VD WARMWASSER SUMME","NHZ HEIZEN SUMME"]
 
 #Aktuelle Stunde als Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x die Stunde abzufragen
 currentHour = time.strftime("%Y%m%d%H")
 filename = './'+currentHour+'.dump'
+currentMonth = time.strftime("%Y%m")
+filenameCSV = './Heizung_'+currentMonth+'.csv'
 #print filename
 
 
@@ -36,11 +47,12 @@ def parseArgs():
 	#
 	if not (args.middle is None):
 	#	print ("middle: %s", args.middle)
-		evaluateMiddle(args.middle)
+		getMiddle(args.middle)
 	if not (args.specific is None):
 	#	print ("Spezifisch: %s", args.specific)
-		evaluateLive(args.specific)
-	
+		print getLive(args.specific)
+	if args.csv is True:
+		addToCSV()
 
 #Hole das File von der STIEBEL ELTRON Webseite v2.5.6
 def getFile():
@@ -49,10 +61,10 @@ def getFile():
 	response3 = requests.post(url3, data=payload, headers={'Connection':'close'})
 
 	file = open(filename, 'w')
-	file.write(response1.content)  # python will convert \n to os.linesep
-	file.write(response2.content)  # python will convert \n to os.linesep
-	file.write(response3.content)  # python will convert \n to os.linesep
-	file.close()  			# you can omit in most cases as the destructor will call it
+	file.write(response1.content)
+	file.write(response2.content)
+	file.write(response3.content)
+	file.close()
 
 #gibt die abgefragten Webseiten der Steuerung aus (nur für Testzwecke)
 def printResponse():
@@ -67,7 +79,7 @@ def printResponse():
 
 
 #Werte die gespeicherte Datei aus
-def evaluateMiddle(value):
+def getMiddle(value):
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search('charts', line):
@@ -75,26 +87,34 @@ def evaluateMiddle(value):
 				if re.search('mittel', line):
 					print line.split(",")[11].split("]")[0]
 
-def evaluateLive(value):
+def getLive(value):
 	#print value
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search(">"+value+"<", line):
+				return fin.next().split(">")[1].split(" ")[0].replace(",",".");
 				
-				print fin.next().split(">")[1].split(" ")[0];
-				#if re.search('mittel', line):
-				#	print line.split(",")[11].split("]")[0]
 
+#fügt alle aktuelle Werte zum CSV dazu
+def addToCSV():
+	if not os.path.exists(filenameCSV):		#Header in die CSV Datei schreiben falls sie neu erstellt wurde
+		with open(filenameCSV, 'a') as fout:
+			fout.write("Date")
+			for i in allKeys:
+				fout.write(","+i)
+			fout.write("\n")
+			fout.close()
 
-
-#Hole Wert mit dem namen der in der Variabel value gespeichert ist
-def getValue(value):
-	return "test"
-
-
-parseArgs()
+	with open(filenameCSV, 'a') as fout:		#Akutelle Werte in die CSV schreiben
+		fout.write(time.strftime("%Y %m %d %H:%M:%S"))
+		for i in allKeys:
+			fout.write(","+getLive(i))
+		fout.write("\n")
+	
 
 #Hauptprogramm
 if not os.path.exists(filename):
 	getFile()
+	addToCSV()
+parseArgs()
 
