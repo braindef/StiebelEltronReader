@@ -26,7 +26,8 @@ To install:
 
 ## Security Considerations
 
-It is a bad idea to use this script and also the Webinterface over the internet since it is completely not encrypted except you use a https proxy and access over HTTPS
+It is a bad idea to use this script and also the Webinterface over the internet since it is completely not encrypted except you use a https proxy and access over HTTPS or if you just use it at home over a wired connection or an encrypted WiFi
+
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/password.png "password")
 As you can easy see with **wireshark** and the function **follow tcp stream**
 
