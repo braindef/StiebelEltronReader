@@ -1,6 +1,6 @@
 # Stiebel Eltron Webinterface Reader (German)
 ### Reads the values from Stiebler Elteron Webinterface and parses it to a format that can be read by zabbix monitoring with external scripts (Tested so far on v2.5.6)
-if you want to use it in English or other Languages you must change the Keywords like "SOLLTEMPERATUR" to your language in the Zabbix Template
+if you want to use it in English or other Languages you must change the Keywords like "SOLLTEMPERATUR" to your language in the Zabbix Template (See **Zabbix Configuration**)
 
 There seems to be a thing that must be added:
 there are twice the Value SOLLTEMPERATUR HK 1, SOLLTEMPERATUR HK 2
@@ -14,7 +14,9 @@ To install:
 4. Copy get.sh and get.py to **/etc/zabbix/externalscripts**
 5. Set URL, Username and Password in get.py
 6. import the *Template zbx_export_Heizung.xml* with your zabbix interface
-7. Customize a screen for your
+7. Customize a screen for your Solution
+
+![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/AuwertungMitZabbix.png "Output")
 
 -For **installing Zabbix** see: http://marclandolt.ch/ml_buzzernet/2017/06/03/zabbix-on-debian-stretch/
 
@@ -22,6 +24,9 @@ To install:
 
 -If you want to **monitor your SNMP-Devices** / Switches With Zabbix see https://www.youtube.com/watch?v=kkipRMrNW2o
 
+## Zabbix Configuration
+
+![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/zabbix.png "Output")
 
 ## Security Considerations
 
