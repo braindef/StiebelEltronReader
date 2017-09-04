@@ -14,7 +14,7 @@ To install:
 4. Copy get.sh and get.py to **/etc/zabbix/externalscripts**
 5. Set URL, Username and Password in get.py
 6. import the *Template zbx_export_Heizung.xml* with your zabbix interface
-7. Customize a screen for your
+7. Customize a screen for your Solution
 
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/AuwertungMitZabbix.png "Output")
 
