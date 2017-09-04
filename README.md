@@ -26,7 +26,7 @@ To install:
 
 ## Zabbix Configuration
 
-![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/AuwertungMitZabbix.png "Output")
+![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/zabbix.png "Output")
 
 ## Security Considerations
 
