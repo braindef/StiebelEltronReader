@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2017-09-03T22:25:27Z</date>
+    <date>2017-09-04T18:34:20Z</date>
     <groups>
         <group>
             <name>Linux servers</name>
@@ -26,7 +26,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;AUSSENTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -65,7 +65,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;BIVALENZTEMPERATUR HZG&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -104,7 +104,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;BIVALENZTEMPERATUR WW&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -143,7 +143,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;DRUCK HEIZKREIS&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -182,7 +182,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;FESTWERTSOLLTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -221,7 +221,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;ISTTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -260,7 +260,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;ISTTEMPERATUR HK 1&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -299,7 +299,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;ISTTEMPERATUR HK 2&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -338,7 +338,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;LEISTUNG WP&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -377,7 +377,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;LSTG PU PUMPE&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -416,7 +416,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;NHZ 1&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -455,7 +455,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;NHZ 2&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -494,7 +494,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;NHZ HEIZEN SUMME&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -533,7 +533,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;PUFFERISTTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -572,7 +572,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;PUFFERSOLLTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -611,7 +611,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;RESTSTILLSTANDZEIT&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -650,7 +650,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;RÜCKLAUFISTTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -689,7 +689,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;SOLLTEMPERATUR&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -728,7 +728,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;SOLLTEMPERATUR HK 1&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -767,7 +767,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;SOLLTEMPERATUR HK 2&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -806,7 +806,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD HEIZEN&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -845,7 +845,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD HEIZEN SUMME&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -884,7 +884,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD HEIZEN TAG&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -923,7 +923,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD WARMWASSER&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -962,7 +962,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD WARMWASSER SUMME&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1001,7 +1001,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VD WARMWASSER TAG&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1040,7 +1040,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VERFLÜSSIGERTEMP.&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1079,7 +1079,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VOLUMENSTROM&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1118,7 +1118,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VORLAUFISTTEMPERATUR NHZ&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
@@ -1157,7 +1157,7 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>get.sh[&quot;--live&quot;,&quot;VORLAUFISTTEMPERATUR WP&quot;]</key>
-                    <delay>900</delay>
+                    <delay>600</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
