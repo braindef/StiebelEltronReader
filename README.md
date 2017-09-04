@@ -28,6 +28,12 @@ To install:
 
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/zabbix.png "Output")
 
+And you have to set the Timeout for Externl Scripts in /etc/zabbix/zabbix_server.conf to 10 Seconds since it takes a while to download the data:
+
+![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/ExternalChecks.png "Timeout")
+
+
+
 ## Security Considerations
 
 It is a bad idea to use this script and also the Webinterface over the internet since it is completely not encrypted except you use a https proxy and access over HTTPS or if you just use it at home over a wired connection or an encrypted WiFi
