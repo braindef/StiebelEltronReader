@@ -32,8 +32,8 @@ allKeys = ["SOLLTEMPERATUR HK 1","SOLLTEMPERATUR HK 2","ISTTEMPERATUR","SOLLTEMP
 "VD WARMWASSER TAG","VD WARMWASSER SUMME","NHZ HEIZEN SUMME"]
 
 
-#Aktuelle Stunde als Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x die Stunde abzufragen
-currentHour = time.strftime("%Y%m%d%H")
+#Aktueller Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x alle 10 Min abzufragen
+currentHour = time.strftime("%Y%m%d%H")+str(int(time.strftime("%M"))/10)
 filename = './'+currentHour+'.dump'
 
 #Aktueller Monat als Dateiname für die CSV Datei, Pro Monat eine Datei
