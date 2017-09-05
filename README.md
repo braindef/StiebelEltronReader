@@ -16,7 +16,7 @@ To install:
 6. import the *Template zbx_export_Heizung.xml* with your zabbix interface
 7. Customize a screen for your Solution
 
-![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/AuwertungMitZabbix.png "Output")
+![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/AuswertungMitZabbix-10Min-Takt.png "Output")
 
 -For **installing Zabbix** see: http://marclandolt.ch/ml_buzzernet/2017/06/03/zabbix-on-debian-stretch/
 
