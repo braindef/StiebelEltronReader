@@ -53,15 +53,15 @@ def parseArgs():
 	args = parser.parse_args()
 	if not (args.history is None):
 		if (args.history=="MIN"):
-			getMin()
+			print getMin()
 		if (args.history=="MIDDLE"):
-			getMiddle()
+			print getMiddle()
 		if (args.history=="MAX"):
-			getMax()
+			print getMax()
 		if (args.history=="HEIZEN"):
-			getHeizen()
+			print getHeizen()
 		if (args.history=="WARMWASSER"):
-			getWarmwasser()
+			print getWarmwasser()
 			
 	if not (args.live is None):
 	#	print ("Spezifisch: %s", args.specific)
@@ -99,7 +99,7 @@ def getMin():
 			if re.search('charts', line):
 				##print line
 				if re.search('min', line):
-					print line.split(",")[11].split("]")[0]
+					return line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
 def getMiddle():
@@ -108,7 +108,7 @@ def getMiddle():
 			if re.search('charts', line):
 				##print line
 				if re.search('mittel', line):
-					print line.split(",")[11].split("]")[0]
+					return line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Maximalwerte aus dem gespeicherten File
 def getMax():
@@ -117,7 +117,7 @@ def getMax():
 			if re.search('charts', line):
 				##print line
 				if re.search('max', line):
-					print line.split(",")[11].split("]")[0]
+					return line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
 def getHeizen():
@@ -126,7 +126,7 @@ def getHeizen():
 			if re.search('charts\[2\]', line):
 				##print line
 				if re.search('line', line):
-					print line.split(",")[11].split("]")[0]
+					return line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
 def getWarmwasser():
@@ -134,7 +134,7 @@ def getWarmwasser():
 		for line in fin:
 			if re.search('charts\[3\]', line):
 				if re.search('line', line):
-					print line.split(",")[11].split("]")[0]
+					return line.split(",")[11].split("]")[0]
 
 
 #Hole die Live Daten aus dem gespeicherten File
