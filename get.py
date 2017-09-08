@@ -84,13 +84,49 @@ def printResponse():
 	print(response3.status_code)
 
 
-#Hole die Mittelwerte aus dem gespeicherten File
+#Hole die Temparatur Minimalwerte aus dem gespeicherten File
+def getMiddle(value):
+	with open(filename, 'r') as fin:
+		for line in fin:
+			if re.search('charts', line):
+				##print line
+				if re.search('min', line):
+					print line.split(",")[11].split("]")[0]
+
+#Hole die Temparatur Mittelwerte aus dem gespeicherten File
 def getMiddle(value):
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search('charts', line):
 				##print line
 				if re.search('mittel', line):
+					print line.split(",")[11].split("]")[0]
+
+#Hole die Temparatur Maximalwerte aus dem gespeicherten File
+def getMiddle(value):
+	with open(filename, 'r') as fin:
+		for line in fin:
+			if re.search('charts', line):
+				##print line
+				if re.search('max', line):
+					print line.split(",")[11].split("]")[0]
+
+#Hole die Temparatur Mittelwerte aus dem gespeicherten File
+def getMiddle(value):
+	with open(filename, 'r') as fin:
+		for line in fin:
+			if re.search('charts[2]', line):
+				##print line
+				if re.search('line', line):
+					print line.split(",")[11].split("]")[0]
+
+#Hole die Temparatur Mittelwerte aus dem gespeicherten File
+def getMiddle(value):
+	with open(filename, 'r') as fin:
+		for line in fin:
+			if re.search('charts[3]', line):
+				##print line
+				if re.search('line', line):
 					print line.split(",")[11].split("]")[0]
 
 
