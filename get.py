@@ -153,6 +153,7 @@ def addToCSV():
 			fout.write("Date")
 			for i in allKeys:
 				fout.write(","+i)
+			fout.write(",MIN,MIDDLE,MAX,HEIZEN,WARMWASSER")
 			fout.write("\n")
 			fout.close()
 
@@ -160,6 +161,11 @@ def addToCSV():
 		fout.write(time.strftime("%Y %m %d %H:%M:%S"))
 		for i in allKeys:
 			fout.write(","+getLive(i))
+		fout.write(","+getMin()) #history Daten
+		fout.write(","+getMiddle())
+		fout.write(","+getMax())
+		fout.write(","+getHeizen())
+		fout.write(","+getWarmwasser())
 		fout.write("\n")
 
 
