@@ -13,12 +13,12 @@ sys.setdefaultencoding('utf8')
 
 #Adresse der Webseite(n)
 #---------------------------------------------------------------------------
-url1 = '****ADRESSE****'		#Adresse der Steuerung bzw. des Webinterfaces
+url1 = 'http://*****URL*****'		#Adresse der Steuerung bzw. des Webinterfaces
 url2 = url1 + '?s=1,0'
 url3 = url1 + '?s=1,1'
 
 #Benutzername und Passwort
-payload = {'make': 'send','user': '****BENUTZERNAME****','pass': '****PASSWORT****'}
+payload = {'make': 'send','user': '*****USERNAME*****','pass': '*****PASSWORD*****'}
 #---------------------------------------------------------------------------
 
 
@@ -31,14 +31,15 @@ allKeys = ["SOLLTEMPERATUR HK 1","SOLLTEMPERATUR HK 2","ISTTEMPERATUR","SOLLTEMP
 "VD WARMWASSER","NHZ 1","NHZ 2","VD HEIZEN TAG","VD HEIZEN SUMME",
 "VD WARMWASSER TAG","VD WARMWASSER SUMME","NHZ HEIZEN SUMME"]
 
-
-#Aktueller Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x alle 10 Min abzufragen
-currentHour = time.strftime("%Y%m%d%H")+str(int(time.strftime("%M"))/10)
-filename = './'+currentHour+'.dump'
-
 #Aktueller Monat als Dateiname für die CSV Datei, Pro Monat eine Datei
 currentMonth = time.strftime("%Y%m")
 filenameCSV = './Heizung_'+currentMonth+'.csv'
+
+#Aktueller Zeitstempel, da sich die Heizung träge verhält macht es keinen Sinn mehr als 1x alle 10 Min abzufragen
+currentHour = time.strftime("%Y%m%d%H")+str(int(time.strftime("%M"))/10)
+filename = './'+currentMonth+'/'+currentHour+'.dump'
+#print filename
+
 #print filename
 
 
@@ -47,17 +48,24 @@ filenameCSV = './Heizung_'+currentMonth+'.csv'
 def parseArgs():
 	parser = argparse.ArgumentParser(description='Liest Werte aus Stiebel Elron Webinterface aus aufruf z.B: $ python get.py --live "PUFFERISTTEMPERATUR"')
 	#parser.add_argument('--csv', action="store_true", default=False, help='gibt alle Daten als CSV aus')
-	parser.add_argument('--middle', action="store", dest="middle", help='gibt die Mittelwerte von der Startseite aus')
-	parser.add_argument('--live', action="store", dest="specific", help='gibt die Live Werte aus')
+	parser.add_argument('--history', action="store", dest="history", help='gibt den gestrigen Mittelwerte von der Startseite aus, Parameter: MIN,MIDDLE,MAX,HEIZEN,WARMWASSER')
+	parser.add_argument('--live', action="store", dest="live", help='gibt die Live Werte aus')
 	args = parser.parse_args()
-	#print ("csv: %s", args.csv)
-	#
-	if not (args.middle is None):
-	#	print ("middle: %s", args.middle)
-		getMiddle(args.middle)
-	if not (args.specific is None):
+	if not (args.history is None):
+		if (args.history=="MIN"):
+			getMin()
+		if (args.history=="MIDDLE"):
+			getMiddle()
+		if (args.history=="MAX"):
+			getMax()
+		if (args.history=="HEIZEN"):
+			getHeizen()
+		if (args.history=="WARMWASSER"):
+			getWarmwasser()
+			
+	if not (args.live is None):
 	#	print ("Spezifisch: %s", args.specific)
-		print getLive(args.specific)
+		print getLive(args.live)
 
 
 #Hole die drei Werteseiten von der STIEBEL ELTRON Webseite v2.5.6
@@ -85,7 +93,7 @@ def printResponse():
 
 
 #Hole die Temparatur Minimalwerte aus dem gespeicherten File
-def getMiddle(value):
+def getMin():
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search('charts', line):
@@ -94,7 +102,7 @@ def getMiddle(value):
 					print line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
-def getMiddle(value):
+def getMiddle():
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search('charts', line):
@@ -103,7 +111,7 @@ def getMiddle(value):
 					print line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Maximalwerte aus dem gespeicherten File
-def getMiddle(value):
+def getMax():
 	with open(filename, 'r') as fin:
 		for line in fin:
 			if re.search('charts', line):
@@ -112,20 +120,19 @@ def getMiddle(value):
 					print line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
-def getMiddle(value):
+def getHeizen():
 	with open(filename, 'r') as fin:
 		for line in fin:
-			if re.search('charts[2]', line):
+			if re.search('charts\[2\]', line):
 				##print line
 				if re.search('line', line):
 					print line.split(",")[11].split("]")[0]
 
 #Hole die Temparatur Mittelwerte aus dem gespeicherten File
-def getMiddle(value):
+def getWarmwasser():
 	with open(filename, 'r') as fin:
 		for line in fin:
-			if re.search('charts[3]', line):
-				##print line
+			if re.search('charts\[3\]', line):
 				if re.search('line', line):
 					print line.split(",")[11].split("]")[0]
 
@@ -156,11 +163,11 @@ def addToCSV():
 		fout.write("\n")
 
 
-
-
 #-----------------------------------------
 # MAIN: Hauptprogramm, hier startet alles
 #-----------------------------------------
+if not os.path.exists("./"+currentMonth):
+	os.makedirs("./"+currentMonth)
 if not os.path.exists(filename):#Holt das Datenfile vom Server wenn es diese Stunde nicht schon einmal geholt wurde und die Datei schon existiert
 	getFile()		
 	addToCSV()		#Fügt die Daten dem CSV hinzu
