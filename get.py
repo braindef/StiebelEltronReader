@@ -68,14 +68,14 @@ def parseArgs():
 		print getLive(args.live)
 
 
-#Hole die drei Werteseiten von der STIEBEL ELTRON Webseite v2.5.6
+#Hole die drei Werteseiten von der STIEBEL ELTRON Steuerunngs Webseite v2.5.6
 def getFile():
 	response1 = requests.post(url1, data=payload, headers={'Connection':'close'})
 	response2 = requests.post(url2, data=payload, headers={'Connection':'close'})
 	response3 = requests.post(url3, data=payload, headers={'Connection':'close'})
 
 	file = open(filename, 'w')
-	file.write(response1.content)
+	file.write(response1.content)  #hänge die drei dateien aneinander
 	file.write(response2.content)
 	file.write(response3.content)
 	file.close()
@@ -142,7 +142,7 @@ def getLive(value):
 	#print value
 	with open(filename, 'r') as fin:
 		for line in fin:
-			if re.search(">"+value+"<", line):
+			if re.search(">"+value+"<", line): #suche nach ">NAMEDERVARIABEL<"
 				return fin.next().split(">")[1].split(" ")[0].replace(",",".");
 
 
