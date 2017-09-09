@@ -158,7 +158,7 @@ def addToCSV():
 			fout.close()
 
 	with open(filenameCSV, 'a') as fout:		#Akutelle Werte in die CSV schreiben
-		fout.write(time.strftime("%Y %m %d %H:%M:%S"))
+		fout.write(time.strftime("%Y-%m-%d %H:%M:%S"))
 		for i in allKeys:
 			fout.write(","+getLive(i))
 		fout.write(","+getMin()) #history Daten
