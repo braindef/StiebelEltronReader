@@ -32,7 +32,8 @@ And you have to set the Timeout for Externl Scripts in /etc/zabbix/zabbix_server
 
 ![alt text](https://raw.githubusercontent.com/braindef/StiebelEltronReader/master/ExternalChecks.png "Timeout")
 
-
+for debugging the following command can be useful
+sudo tail -f /var/log/zabbix-server/zabbix_server.log
 
 ## Security Considerations
 
